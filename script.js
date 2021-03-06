@@ -12,6 +12,7 @@
     var timeOut;
      
     init();
+     
     
     function init(){
         var canvas = document.createElement('canvas');
@@ -162,10 +163,20 @@
             var maxY = heightInBlocks - 1;
             var isNotBetweenHorizontalWalls = snakeX < minX || snakeX > maxX;
             var isNotBetweenVerticalWalls = snakeY < minY || snakeY > maxY;
-            
-            if(isNotBetweenHorizontalWalls || isNotBetweenVerticalWalls){
-                wallCollision = true;    
-            }
+         
+           if(snakeX > maxX){
+                    this.body[0][0] = minX
+                }
+                if(snakeY > maxY){
+                    this.body[0][1] =minY
+                }
+    
+                if(snakeX < minX){
+                    this.body[0][0] =maxX
+                }
+                if(snakeY < minY){
+                    this.body[0][1] =maxY
+                }
             
             for(var i = 0; i < rest.length ; i++){
                 if(snakeX === rest[i][0] && snakeY === rest[i][1]){
